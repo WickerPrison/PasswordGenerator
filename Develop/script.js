@@ -1,18 +1,18 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
-var xBtn = document.querySelectorAll(".x-button");
-var background = document.getElementById("grey-out");
+const generateBtn = document.querySelector("#generate");
+const xBtn = document.querySelectorAll(".x-button");
+const background = document.getElementById("grey-out");
 
-var passwordLength = document.getElementById("password-length");
-var lengthBtn = document.getElementById("lengthButton");
-var lengthInput = document.getElementById("lengthInput");
-var lengthError = document.getElementById("length-error");
+const passwordLength = document.getElementById("password-length");
+const lengthBtn = document.getElementById("lengthButton");
+const lengthInput = document.getElementById("lengthInput");
+const lengthError = document.getElementById("length-error");
 
-var characterTypes = document.getElementById("character-types");
-var characterBtn = document.getElementById("characterButton");
-var typeError = document.getElementById("character-type-error");
+const characterTypes = document.getElementById("character-types");
+const characterBtn = document.getElementById("characterButton");
+const typeError = document.getElementById("character-type-error");
 
-var popups = [passwordLength, characterTypes];
+const popups = [passwordLength, characterTypes];
 
 var charNum = 8;
 var lowerCase = true;
@@ -24,6 +24,15 @@ var lowerCaseString = "abcdefghijklmnopqrstuvwxyz";
 var capitalString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numsString = "0123456789"; 
 var specialCharactersString = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+
+var pulse;
+var isGrowing = true;
+var minSize = getComputedStyle(document.documentElement).getPropertyValue('--min-size');
+minSize = minSize.substring(0, minSize.length - 2);
+var maxSize = getComputedStyle(document.documentElement).getPropertyValue('--max-size');
+maxSize = maxSize.substring(0, maxSize.length - 2);
+var messageSize = 18;
+var message;
 
 // Write password to the #password input
 function writePassword() {
@@ -62,6 +71,8 @@ function setLength(){
 
   if(lengthInput.value < 8 || lengthInput.value > 128){
     lengthError.classList.add("error-message");
+    message = lengthError;
+    errorPulse();
     return;
   }
 
@@ -82,6 +93,8 @@ function setCharacterTypes(){
 
   if(!lowerCase && !upperCase && !numeric && !specialCharacters){
     typeError.classList.add("error-message");
+    message = typeError;
+    errorPulse();
     return;
   }
 
@@ -97,6 +110,27 @@ function exitPopups(){
   }
   lengthError.classList.remove("error-message");
   typeError.classList.remove("error-message");
+}
+
+function errorPulse(){
+  clearInterval(pulse);
+  isGrowing = true;
+  pulse = setInterval(pulseAnimation, 15);
+}
+
+function pulseAnimation(){
+  if(isGrowing && messageSize < maxSize){
+    messageSize+= 0.2;
+    if(messageSize >= maxSize) isGrowing = false;
+  }
+  else if(!isGrowing && messageSize > minSize){
+    messageSize-=0.2;
+    if(messageSize < minSize){
+      isGrowing = true;
+      clearInterval(pulse);
+    }
+  }
+  message.style.fontSize = messageSize + "px";
 }
 
 // Add event listener to generate button
