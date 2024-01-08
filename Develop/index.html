@@ -28,15 +28,19 @@
           <button id="generate" class="btn">Generate Password</button>
         </div>
       </div>
-      <div class="card popup">
+      <!-- password length popup -->
+      <div id="password-length" class="card popup">
+        <button class="x-button">x</button>
         <div class="card-header">
           <h2>Choose Password Length</h2>
         </div>
         <div class="card-body">
           <span>Must be between 8 and 128 characters</span>
-          <input type="number" value="8" min="8" max="128">
+          <input id="lengthInput" type="number" value="8" min="8" max="128">
         </div>
+        <button id="lengthButton" class="btn">Continue</button>
       </div>
+      <!-- creates the greyed out background -->
       <div id="grey-out"></div>
     </div>
     <script src="script.js"></script>
