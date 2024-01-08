@@ -156,11 +156,15 @@ span{
 
 input{
   font-size: 22px;
-  display: block;
+  display: inline;
   margin: 20px auto 0 auto;
 }
 
 #password-length{
+  display: none;
+}
+
+#character-types{
   display: none;
 }
 

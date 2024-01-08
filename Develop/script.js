@@ -7,9 +7,16 @@ var passwordLength = document.getElementById("password-length");
 var lengthBtn = document.getElementById("lengthButton");
 var lengthInput = document.getElementById("lengthInput");
 
-var popups = [passwordLength];
+var characterTypes = document.getElementById("character-types");
+var characterBtn = document.getElementById("characterButton");
+
+var popups = [passwordLength, characterTypes];
 
 var charNum = 8;
+var lowerCase = true;
+var upperCase = true;
+var numeric = true;
+var specialCharacters = true;
 
 // Write password to the #password input
 function writePassword() {
@@ -21,6 +28,10 @@ function writePassword() {
 }
 
 function generatePassword(){
+  
+}
+
+function firstPopup(){
   background.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
   passwordLength.style.display = "inline";
   passwordLength.style.pointerEvents = "auto";
@@ -28,7 +39,22 @@ function generatePassword(){
 
 function setLength(){
   charNum = lengthInput.value;
-  console.log(charNum);
+
+  passwordLength.style.display = "none";
+  passwordLength.style.pointerEvents = "none";
+
+  characterTypes.style.display = "inline";
+  characterTypes.style.pointerEvents = "auto";
+}
+
+function setCharacterTypes(){
+  lowerCase = document.getElementById("lowerCase").checked;
+  upperCase = document.getElementById("upperCase").checked;
+  numeric = document.getElementById("numeric").checked;
+  specialCharacters = document.getElementById("specialCharacters").checked;
+
+  exitPopups();
+  writePassword();
 }
 
 function exitPopups(){
@@ -40,9 +66,10 @@ function exitPopups(){
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", firstPopup);
 xBtn.forEach(element => {
-  element.addEventListener("click", exitPopups)
+  element.addEventListener("click", exitPopups);
 });
 
-lengthBtn.addEventListener("click", setLength)
+lengthBtn.addEventListener("click", setLength);
+characterBtn.addEventListener("click", setCharacterTypes);
