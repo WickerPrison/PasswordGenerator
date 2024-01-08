@@ -36,10 +36,10 @@ var message;
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var finalPassword = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  passwordText.value = finalPassword;
 
 }
 
@@ -52,13 +52,53 @@ function generatePassword(){
   
   var possibleArray = totalString.split("");
   var outputString = "";
-  var integer;
   for(var i = 0; i < charNum; i++){
-    integer = Math.floor(Math.random() * possibleArray.length);
-    outputString += possibleArray[integer];
+    outputString += getRandomCharacter(possibleArray);
   }
 
+  outputString = ensureOneOfEach(outputString);
+  
   return outputString;
+}
+
+function getRandomCharacter(possibleArray){
+    var integer = Math.floor(Math.random() * possibleArray.length);
+    return possibleArray[integer];
+}
+
+function ensureOneOfEach(password){
+  var usedIndicies = [];
+  if(lowerCase){
+    password = replaceCharacter(password, findInteger(usedIndicies), getRandomCharacter(lowerCaseString.split("")));
+  }
+
+  if(upperCase){
+    password = replaceCharacter(password,findInteger(usedIndicies), getRandomCharacter(capitalString.split("")));
+  }
+
+  if(numeric){
+    password = replaceCharacter(password,findInteger(usedIndicies), getRandomCharacter(numsString.split("")));
+  }
+
+  if(specialCharacters){
+    password = replaceCharacter(password, findInteger(usedIndicies), getRandomCharacter(specialCharactersString.split("")));
+  }
+
+  return password;
+}
+
+function findInteger(usedIndicies){
+  var randomInteger = Math.floor(Math.random() * charNum);
+  while(usedIndicies.includes(randomInteger)){
+    randomInteger = Math.floor(Math.random() * charNum);
+  }
+  usedIndicies.push(randomInteger);
+  return randomInteger;
+}
+
+function replaceCharacter(originalString, index, newCharacter){
+  console.log(newCharacter);
+  return originalString.substring(0, index) + newCharacter + originalString.substring(index + 1);
 }
 
 function firstPopup(){
