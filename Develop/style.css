@@ -133,9 +133,10 @@ button[disabled] {
 .x-button{
   display: inline;
   position: absolute;
-  font-size: 12px;
-  right: 15px;
-  top: 15px;
+  font-size: 20px;
+  right: 5px;
+  top: 5px;
+  padding: 5px 15px;
 }
 
 .popup{
@@ -166,6 +167,11 @@ input{
 
 #character-types{
   display: none;
+}
+
+.error-message{
+  color: hsl(360, 91%, 36%);
+  font-weight: bold;
 }
 
 @media (max-width: 690px) {

@@ -6,9 +6,11 @@ var background = document.getElementById("grey-out");
 var passwordLength = document.getElementById("password-length");
 var lengthBtn = document.getElementById("lengthButton");
 var lengthInput = document.getElementById("lengthInput");
+var lengthError = document.getElementById("length-error");
 
 var characterTypes = document.getElementById("character-types");
 var characterBtn = document.getElementById("characterButton");
+var typeError = document.getElementById("character-type-error");
 
 var popups = [passwordLength, characterTypes];
 
@@ -21,7 +23,7 @@ var specialCharacters = true;
 var lowerCaseString = "abcdefghijklmnopqrstuvwxyz";
 var capitalString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numsString = "0123456789"; 
-var specialCharactersString = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+var specialCharactersString = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
 
 // Write password to the #password input
 function writePassword() {
@@ -57,6 +59,12 @@ function firstPopup(){
 }
 
 function setLength(){
+
+  if(lengthInput.value < 8 || lengthInput.value > 128){
+    lengthError.classList.add("error-message");
+    return;
+  }
+
   charNum = lengthInput.value;
 
   passwordLength.style.display = "none";
@@ -72,6 +80,11 @@ function setCharacterTypes(){
   numeric = document.getElementById("numeric").checked;
   specialCharacters = document.getElementById("specialCharacters").checked;
 
+  if(!lowerCase && !upperCase && !numeric && !specialCharacters){
+    typeError.classList.add("error-message");
+    return;
+  }
+
   exitPopups();
   writePassword();
 }
@@ -82,6 +95,8 @@ function exitPopups(){
     popups[i].style.display = "none";
     popups[i].style.pointerEvents = "none";
   }
+  lengthError.classList.remove("error-message");
+  typeError.classList.remove("error-message");
 }
 
 // Add event listener to generate button

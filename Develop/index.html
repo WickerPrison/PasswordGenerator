@@ -30,23 +30,24 @@
       </div>
       <!-- password length popup -->
       <div id="password-length" class="card popup">
-        <button class="x-button">x</button>
+        <button class="x-button btn">x</button>
         <div class="card-header">
           <h2>Choose Password Length</h2>
         </div>
         <div class="card-body">
-          <span>Must be between 8 and 128 characters</span>
+          <span id="length-error">Must be between 8 and 128 characters</span>
           <input id="lengthInput" type="number" value="8" min="8" max="128">
         </div>
         <button id="lengthButton" class="btn">Continue</button>
       </div>
       <!-- character types popup -->
       <div id="character-types" class="card popup">
-        <button class="x-button">x</button>
+        <button class="x-button btn">x</button>
         <div class="card-header">
           <h2>Choose Character Types</h2>
         </div>
         <div class="card-body">
+          <span id="character-type-error">Must have at least one type selected</span>
           <input type="checkbox" id="lowerCase" checked="checked">
           <label for="lowerCase">Lower Case Letters</label>
           <br>
