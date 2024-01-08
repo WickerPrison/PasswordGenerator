@@ -18,6 +18,11 @@ var upperCase = true;
 var numeric = true;
 var specialCharacters = true;
 
+var lowerCaseString = "abcdefghijklmnopqrstuvwxyz";
+var capitalString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numsString = "0123456789"; 
+var specialCharactersString = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -28,7 +33,21 @@ function writePassword() {
 }
 
 function generatePassword(){
+  var totalString = "";
+  if(lowerCase) totalString += lowerCaseString;
+  if(upperCase) totalString += capitalString;
+  if(numeric) totalString += numsString;
+  if(specialCharacters) totalString += specialCharactersString;
   
+  var possibleArray = totalString.split("");
+  var outputString = "";
+  var integer;
+  for(var i = 0; i < charNum; i++){
+    integer = Math.floor(Math.random() * possibleArray.length);
+    outputString += possibleArray[integer];
+  }
+
+  return outputString;
 }
 
 function firstPopup(){
