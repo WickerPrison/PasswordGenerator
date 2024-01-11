@@ -57,7 +57,7 @@ function generatePassword(){
   }
 
   outputString = ensureOneOfEach(outputString);
-  
+
   return outputString;
 }
 
@@ -97,7 +97,6 @@ function findInteger(usedIndicies){
 }
 
 function replaceCharacter(originalString, index, newCharacter){
-  console.log(newCharacter);
   return originalString.substring(0, index) + newCharacter + originalString.substring(index + 1);
 }
 
