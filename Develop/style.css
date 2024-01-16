@@ -154,16 +154,44 @@ button[disabled] {
   pointer-events: none;
 }
 
+.card-body{
+  position: relative;
+  padding-top: 45px;
+}
+
 span{
   display: block;
   font-size: var(--min-size);
-  margin: 35px auto 0 auto;
+  position: absolute;
+  width: 100%;
+  top: 10px;
+  /* margin: 15px auto 15px auto; */
 }
 
 input{
   font-size: 22px;
   display: inline;
-  margin: 20px auto 0 auto;
+  /* margin: 20px auto 0 auto; */
+}
+
+#check-holder{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: wrap;
+  width: 50%;
+  margin-left: 28%;
+  margin-right: 22%;
+}
+
+#check-holder input{
+
+  width: 10%;
+}
+
+#check-holder label{
+  width: 80%;
+  text-align: left;
 }
 
 #password-length{
