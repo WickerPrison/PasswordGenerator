@@ -124,6 +124,7 @@ button[disabled] {
   overflow: hidden;
 }
 
+/* this is used to grey out the background when there is a popup on the screen */
 #grey-out{
   background-color: rgba(0, 0, 0, 0);
   width: 100%;
@@ -135,6 +136,7 @@ button[disabled] {
   pointer-events: none;
 }
 
+/* This button is used to close popups */
 .x-button{
   display: inline;
   position: absolute;
@@ -144,6 +146,7 @@ button[disabled] {
   padding: 5px 15px;
 }
 
+/* this is the popup window */
 .popup{
   z-index: 2;
   position: absolute;
@@ -165,15 +168,14 @@ span{
   position: absolute;
   width: 100%;
   top: 10px;
-  /* margin: 15px auto 15px auto; */
 }
 
 input{
   font-size: 22px;
   display: inline;
-  /* margin: 20px auto 0 auto; */
 }
 
+/* this holds the checkboxes and aligns them properly */
 #check-holder{
   display: flex;
   flex-direction: row;
@@ -184,7 +186,6 @@ input{
 }
 
 #check-holder input{
-
   width: 10%;
 }
 
@@ -193,6 +194,7 @@ input{
   text-align: left;
 }
 
+/* these are set to display none to hide the popups */
 #password-length{
   display: none;
 }
@@ -207,6 +209,7 @@ input{
   font-size: var(--min-size);
 }
 
+/* these media queries ensure it all works on smaller screens */
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
@@ -231,7 +234,6 @@ input{
     top: 10px;
     padding: 5px 15px;
   }
-
 }
 
 @media (max-width: 500px) {
