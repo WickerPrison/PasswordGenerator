@@ -179,9 +179,8 @@ input{
   flex-direction: row;
   justify-content: start;
   flex-wrap: wrap;
-  width: 50%;
-  margin-left: 28%;
-  margin-right: 22%;
+  width: 196px;
+  margin: 0 auto;
 }
 
 #check-holder input{
@@ -218,10 +217,34 @@ input{
   #password {
     font-size: 1rem;
   }
+
+  .popup{
+    width: 90%;
+    left: 5%;
+  }
+
+  .x-button{
+    position: absolute;
+    font-size: 20px;
+    right: 10px;
+    margin-top: 0;
+    top: 10px;
+    padding: 5px 15px;
+  }
+
 }
 
 @media (max-width: 500px) {
   .btn {
     font-size: 0.8rem;
+  }
+
+  input{
+    font-size: 20px;
+  }
+
+  .card-body{
+    position: relative;
+    padding-top: 60px;
   }
 }
